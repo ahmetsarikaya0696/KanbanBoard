@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanBan.UI", "KanBan.UI\KanBan.UI.csproj", "{3AE9B7ED-D004-4DC9-99B7-BA260508ECC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanBan.DATA", "KanBan.DATA\KanBan.DATA.csproj", "{2655C4DD-6078-4C70-B4CF-F617DBF1B73D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AE9B7ED-D004-4DC9-99B7-BA260508ECC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AE9B7ED-D004-4DC9-99B7-BA260508ECC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AE9B7ED-D004-4DC9-99B7-BA260508ECC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AE9B7ED-D004-4DC9-99B7-BA260508ECC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2655C4DD-6078-4C70-B4CF-F617DBF1B73D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2655C4DD-6078-4C70-B4CF-F617DBF1B73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2655C4DD-6078-4C70-B4CF-F617DBF1B73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2655C4DD-6078-4C70-B4CF-F617DBF1B73D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADCA32BC-5965-4394-AAFC-AF20CE46C4FD}
+	EndGlobalSection
+EndGlobal
