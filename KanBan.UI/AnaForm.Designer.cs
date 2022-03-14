@@ -61,6 +61,7 @@
             this.MainMenuStrip = this.msAnaForm;
             this.Name = "AnaForm";
             this.Text = "AnaForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AnaForm_FormClosing);
             this.msAnaForm.ResumeLayout(false);
             this.msAnaForm.PerformLayout();
             this.ResumeLayout(false);

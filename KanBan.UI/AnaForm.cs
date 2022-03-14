@@ -13,17 +13,18 @@ namespace KanBan.UI
 {
     public partial class AnaForm : Form
     {
-       
+        private bool isFormOpen { get; set; }
         public AnaForm()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
+            isFormOpen = true;
         }
 
         private void tsmiAddNewProject_Click(object sender, EventArgs e)
         {
             ProjectForm projectForm = new ProjectForm();
-       
+
             projectForm.MdiParent = this;
             projectForm.Disposed += ProjectForm_Disposed;
             Veriler.AktifFormList.Add(projectForm);
@@ -40,11 +41,18 @@ namespace KanBan.UI
 
         private void AktifFormlariListele()
         {
-            foreach (var item in Veriler.AktifFormList)
-                item.Show();
-           
-            LayoutMdi(MdiLayout.TileVertical);
+            if (isFormOpen)
+            {
+                foreach (var item in Veriler.AktifFormList)
+                    item.Show();
 
+                LayoutMdi(MdiLayout.TileVertical);
+            }
+        }
+
+        private void AnaForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            isFormOpen = false;
         }
     }
 }
