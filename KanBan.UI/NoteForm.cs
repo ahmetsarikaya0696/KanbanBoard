@@ -15,6 +15,13 @@ namespace KanBan.UI
         public NoteForm()
         {
             InitializeComponent();
+            txtNote.MaxLength = 280;
+            tsslKalanKarakterSayisi.Text = txtNote.MaxLength.ToString();
+        }
+
+        private void txtNote_TextChanged(object sender, EventArgs e)
+        {
+            tsslKalanKarakterSayisi.Text = (txtNote.MaxLength - txtNote.Text.Length).ToString() + " / " + txtNote.MaxLength.ToString();
         }
     }
 }
