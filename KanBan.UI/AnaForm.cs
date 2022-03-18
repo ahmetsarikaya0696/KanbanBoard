@@ -23,12 +23,22 @@ namespace KanBan.UI
 
         private void tsmiAddNewProject_Click(object sender, EventArgs e)
         {
+            ProjectFormHeader pfh = new ProjectFormHeader();
+            pfh.ProjeEklendi += Pfh_ProjeEklendi;
+            pfh.ShowDialog();
+
+        }
+
+        private void Pfh_ProjeEklendi(object sender, EventArgs e)
+        {
             ProjectForm projectForm = new ProjectForm();
 
             projectForm.MdiParent = this;
+
             projectForm.Disposed += ProjectForm_Disposed;
             Veriler.AktifFormList.Add(projectForm);
             AktifFormlariListele();
+
         }
 
         private void ProjectForm_Disposed(object sender, EventArgs e)

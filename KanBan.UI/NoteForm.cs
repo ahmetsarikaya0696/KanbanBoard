@@ -16,12 +16,19 @@ namespace KanBan.UI
         {
             InitializeComponent();
             txtNote.MaxLength = 280;
-            tsslKalanKarakterSayisi.Text = txtNote.MaxLength.ToString();
+            tsslKalanKarakterSayisi.Text = $"0   / {txtNote.MaxLength}";
         }
 
         private void txtNote_TextChanged(object sender, EventArgs e)
         {
-            tsslKalanKarakterSayisi.Text = (txtNote.MaxLength - txtNote.Text.Length).ToString() + " / " + txtNote.MaxLength.ToString();
+            tsslKalanKarakterSayisi.Text =  $"{(txtNote.MaxLength - txtNote.Text.Length)} / {txtNote.MaxLength}";
+        }
+
+        private void saveAndExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // notu veri tabanına kaydet
+            // notun txt ve kategorilerini notepreview item a kaydet
+
         }
     }
 }

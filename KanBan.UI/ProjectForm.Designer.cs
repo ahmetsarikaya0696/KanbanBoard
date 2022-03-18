@@ -28,93 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.sc1 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
-            this.sc2 = new System.Windows.Forms.SplitContainer();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.msProjectContainer = new System.Windows.Forms.MenuStrip();
             this.tsmiAddNote = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.sc1)).BeginInit();
-            this.sc1.Panel1.SuspendLayout();
-            this.sc1.Panel2.SuspendLayout();
-            this.sc1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sc2)).BeginInit();
-            this.sc2.Panel1.SuspendLayout();
-            this.sc2.Panel2.SuspendLayout();
-            this.sc2.SuspendLayout();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.flpDone = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblDone = new System.Windows.Forms.Label();
+            this.flpDoing = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblDoing = new System.Windows.Forms.Label();
+            this.flpToDo = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblToDo = new System.Windows.Forms.Label();
             this.msProjectContainer.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.flpDone.SuspendLayout();
+            this.flpDoing.SuspendLayout();
+            this.flpToDo.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // sc1
-            // 
-            this.sc1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.sc1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sc1.IsSplitterFixed = true;
-            this.sc1.Location = new System.Drawing.Point(0, 25);
-            this.sc1.Name = "sc1";
-            // 
-            // sc1.Panel1
-            // 
-            this.sc1.Panel1.Controls.Add(this.label1);
-            // 
-            // sc1.Panel2
-            // 
-            this.sc1.Panel2.Controls.Add(this.sc2);
-            this.sc1.Size = new System.Drawing.Size(515, 288);
-            this.sc1.SplitterDistance = 159;
-            this.sc1.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "TODO";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // sc2
-            // 
-            this.sc2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.sc2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sc2.Location = new System.Drawing.Point(0, 0);
-            this.sc2.Name = "sc2";
-            // 
-            // sc2.Panel1
-            // 
-            this.sc2.Panel1.Controls.Add(this.label2);
-            // 
-            // sc2.Panel2
-            // 
-            this.sc2.Panel2.Controls.Add(this.label3);
-            this.sc2.Size = new System.Drawing.Size(352, 288);
-            this.sc2.SplitterDistance = 166;
-            this.sc2.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(162, 23);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "DOING";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(178, 23);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "DONE";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // msProjectContainer
             // 
@@ -122,7 +50,7 @@
             this.tsmiAddNote});
             this.msProjectContainer.Location = new System.Drawing.Point(0, 0);
             this.msProjectContainer.Name = "msProjectContainer";
-            this.msProjectContainer.Size = new System.Drawing.Size(515, 25);
+            this.msProjectContainer.Size = new System.Drawing.Size(786, 25);
             this.msProjectContainer.TabIndex = 4;
             this.msProjectContainer.Text = "menuStrip1";
             // 
@@ -132,38 +60,137 @@
             this.tsmiAddNote.Name = "tsmiAddNote";
             this.tsmiAddNote.Size = new System.Drawing.Size(93, 21);
             this.tsmiAddNote.Text = "Add Note";
+            this.tsmiAddNote.Click += new System.EventHandler(this.tsmiAddNote_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
+            this.tableLayoutPanel1.Controls.Add(this.flpDone, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.flpDoing, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.flpToDo, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(786, 505);
+            this.tableLayoutPanel1.TabIndex = 17;
+            // 
+            // flpDone
+            // 
+            this.flpDone.AllowDrop = true;
+            this.flpDone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpDone.Controls.Add(this.lblDone);
+            this.flpDone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpDone.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpDone.Location = new System.Drawing.Point(525, 3);
+            this.flpDone.Name = "flpDone";
+            this.flpDone.Size = new System.Drawing.Size(258, 499);
+            this.flpDone.TabIndex = 21;
+            this.flpDone.DragDrop += new System.Windows.Forms.DragEventHandler(this.flpDone_DragDrop);
+            this.flpDone.DragEnter += new System.Windows.Forms.DragEventHandler(this.flpDone_DragEnter);
+            // 
+            // lblDone
+            // 
+            this.lblDone.AutoSize = true;
+            this.lblDone.BackColor = System.Drawing.Color.PaleGreen;
+            this.lblDone.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDone.Location = new System.Drawing.Point(3, 0);
+            this.lblDone.Name = "lblDone";
+            this.lblDone.Size = new System.Drawing.Size(59, 20);
+            this.lblDone.TabIndex = 0;
+            this.lblDone.Text = "DONE";
+            this.lblDone.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // flpDoing
+            // 
+            this.flpDoing.AllowDrop = true;
+            this.flpDoing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpDoing.Controls.Add(this.lblDoing);
+            this.flpDoing.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpDoing.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpDoing.Location = new System.Drawing.Point(264, 3);
+            this.flpDoing.Name = "flpDoing";
+            this.flpDoing.Size = new System.Drawing.Size(255, 499);
+            this.flpDoing.TabIndex = 20;
+            this.flpDoing.DragDrop += new System.Windows.Forms.DragEventHandler(this.flpDoing_DragDrop);
+            this.flpDoing.DragEnter += new System.Windows.Forms.DragEventHandler(this.flpDoing_DragEnter);
+            // 
+            // lblDoing
+            // 
+            this.lblDoing.AutoSize = true;
+            this.lblDoing.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.lblDoing.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblDoing.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDoing.Location = new System.Drawing.Point(3, 0);
+            this.lblDoing.Name = "lblDoing";
+            this.lblDoing.Size = new System.Drawing.Size(67, 20);
+            this.lblDoing.TabIndex = 0;
+            this.lblDoing.Text = "DOING";
+            this.lblDoing.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // flpToDo
+            // 
+            this.flpToDo.AllowDrop = true;
+            this.flpToDo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpToDo.Controls.Add(this.lblToDo);
+            this.flpToDo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpToDo.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpToDo.Location = new System.Drawing.Point(3, 3);
+            this.flpToDo.Name = "flpToDo";
+            this.flpToDo.Size = new System.Drawing.Size(255, 499);
+            this.flpToDo.TabIndex = 19;
+            this.flpToDo.DragDrop += new System.Windows.Forms.DragEventHandler(this.flpToDo_DragDrop);
+            this.flpToDo.DragEnter += new System.Windows.Forms.DragEventHandler(this.flpToDo_DragEnter);
+            // 
+            // lblToDo
+            // 
+            this.lblToDo.AutoSize = true;
+            this.lblToDo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblToDo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblToDo.Location = new System.Drawing.Point(3, 0);
+            this.lblToDo.Name = "lblToDo";
+            this.lblToDo.Size = new System.Drawing.Size(58, 20);
+            this.lblToDo.TabIndex = 0;
+            this.lblToDo.Text = "TODO";
+            this.lblToDo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 313);
-            this.Controls.Add(this.sc1);
+            this.ClientSize = new System.Drawing.Size(786, 530);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.msProjectContainer);
             this.Name = "ProjectForm";
             this.Text = "ProjectForm";
-            this.sc1.Panel1.ResumeLayout(false);
-            this.sc1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.sc1)).EndInit();
-            this.sc1.ResumeLayout(false);
-            this.sc2.Panel1.ResumeLayout(false);
-            this.sc2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.sc2)).EndInit();
-            this.sc2.ResumeLayout(false);
             this.msProjectContainer.ResumeLayout(false);
             this.msProjectContainer.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.flpDone.ResumeLayout(false);
+            this.flpDone.PerformLayout();
+            this.flpDoing.ResumeLayout(false);
+            this.flpDoing.PerformLayout();
+            this.flpToDo.ResumeLayout(false);
+            this.flpToDo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.SplitContainer sc1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.SplitContainer sc2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MenuStrip msProjectContainer;
         private System.Windows.Forms.ToolStripMenuItem tsmiAddNote;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpDone;
+        private System.Windows.Forms.Label lblDone;
+        private System.Windows.Forms.FlowLayoutPanel flpDoing;
+        private System.Windows.Forms.Label lblDoing;
+        private System.Windows.Forms.FlowLayoutPanel flpToDo;
+        private System.Windows.Forms.Label lblToDo;
     }
 }

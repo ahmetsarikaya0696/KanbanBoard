@@ -17,6 +17,73 @@ namespace KanBan.UI
         public ProjectForm()
         {
             InitializeComponent();
+            lblToDo.Width = lblDoing.Width = lblDone.Width = flpToDo.Width = flpDoing.Width = flpDone.Width = ClientSize.Width;
+            flpToDo.Height = flpDoing.Height = flpDone.Height = ClientSize.Height;
         }
+
+        private void tsmiAddNote_Click(object sender, EventArgs e)
+        {
+            flpToDo.Controls.Add(new NotePreview() { Width = flpToDo.Width - 10, Height = (flpToDo.Width - 10) / 2 });
+            foreach (var control in flpToDo.Controls)
+            {
+                if (control is NotePreview)
+                {
+                    MessageBox.Show(((NotePreview)control).Name);
+                }
+
+            }
+        }
+
+        private void flpToDo_DragEnter(object sender, DragEventArgs e)
+        {
+            DragEnterMetot(e);
+        }
+
+        private void flpDoing_DragEnter(object sender, DragEventArgs e)
+        {
+            DragEnterMetot(e);
+        }
+
+        private void flpDone_DragEnter(object sender, DragEventArgs e)
+        {
+            DragEnterMetot(e);
+        }
+
+        private void flpToDo_DragDrop(object sender, DragEventArgs e)
+        {
+            DragDropMetot(sender, e);
+        }
+
+        private void flpDoing_DragDrop(object sender, DragEventArgs e)
+        {
+            DragDropMetot(sender, e);
+        }
+
+        private void flpDone_DragDrop(object sender, DragEventArgs e)
+        {
+            DragDropMetot(sender, e);
+        }
+
+        private void DragDropMetot(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(typeof(string)))
+                return;
+
+            var name = e.Data.GetData(typeof(string)) as string;
+            var ctr = this.Controls.Find(name, true).FirstOrDefault();
+            if (ctr != null)
+            {
+                ctr.Parent.Controls.Remove(ctr);
+                var panel = sender as FlowLayoutPanel;
+                ((FlowLayoutPanel)sender).Controls.Add(ctr);
+            }
+        }
+
+        private static void DragEnterMetot(DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+
     }
 }
