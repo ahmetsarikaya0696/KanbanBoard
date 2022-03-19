@@ -1,5 +1,4 @@
-﻿using KanBan.DATA;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,14 +23,13 @@ namespace KanBan.UI
         private void tsmiAddNote_Click(object sender, EventArgs e)
         {
             flpToDo.Controls.Add(new NotePreview() { Width = flpToDo.Width - 10, Height = (flpToDo.Width - 10) / 2 });
-            foreach (var control in flpToDo.Controls)
-            {
-                if (control is NotePreview)
-                {
-                    MessageBox.Show(((NotePreview)control).Name);
-                }
-
-            }
+            //foreach (var control in flpToDo.Controls)
+            //{
+            //    if (control is NotePreview)
+            //    {
+            //        MessageBox.Show(((NotePreview)control).Name);
+            //    }
+            //}
         }
 
         private void flpToDo_DragEnter(object sender, DragEventArgs e)

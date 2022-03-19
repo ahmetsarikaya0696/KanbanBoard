@@ -16,7 +16,7 @@ namespace KanBan.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ProjectForm());
+            Application.Run(new AnaForm());
 
         }
     }

@@ -1,5 +1,4 @@
-﻿using KanBan.DATA;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,30 +33,22 @@ namespace KanBan.UI
             ProjectForm projectForm = new ProjectForm();
 
             projectForm.MdiParent = this;
+            projectForm.Show();
+            Listele();
 
             projectForm.Disposed += ProjectForm_Disposed;
-            Veriler.AktifFormList.Add(projectForm);
-            AktifFormlariListele();
-
         }
 
         private void ProjectForm_Disposed(object sender, EventArgs e)
         {
-            Veriler.PasifFormList.Add((ProjectForm)sender);
-            Veriler.AktifFormList.Remove((ProjectForm)sender);
-            AktifFormlariListele();
+            Listele();
 
         }
 
-        private void AktifFormlariListele()
+        private void Listele()
         {
             if (isFormOpen)
-            {
-                foreach (var item in Veriler.AktifFormList)
-                    item.Show();
-
-                LayoutMdi(MdiLayout.TileVertical);
-            }
+               LayoutMdi(MdiLayout.TileVertical);
         }
 
         private void AnaForm_FormClosing(object sender, FormClosingEventArgs e)
