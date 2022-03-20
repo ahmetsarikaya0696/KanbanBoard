@@ -30,6 +30,7 @@
         {
             this.msAnaForm = new System.Windows.Forms.MenuStrip();
             this.tsmiAddNewProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.addAndEditCategoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msAnaForm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -37,7 +38,8 @@
             // 
             this.msAnaForm.AllowMerge = false;
             this.msAnaForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiAddNewProject});
+            this.tsmiAddNewProject,
+            this.addAndEditCategoriesToolStripMenuItem});
             this.msAnaForm.Location = new System.Drawing.Point(0, 0);
             this.msAnaForm.Name = "msAnaForm";
             this.msAnaForm.Size = new System.Drawing.Size(698, 25);
@@ -50,6 +52,14 @@
             this.tsmiAddNewProject.Size = new System.Drawing.Size(134, 21);
             this.tsmiAddNewProject.Text = "Add New Project";
             this.tsmiAddNewProject.Click += new System.EventHandler(this.tsmiAddNewProject_Click);
+            // 
+            // addAndEditCategoriesToolStripMenuItem
+            // 
+            this.addAndEditCategoriesToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.addAndEditCategoriesToolStripMenuItem.Image = global::KanBan.UI.Properties.Resources.category;
+            this.addAndEditCategoriesToolStripMenuItem.Name = "addAndEditCategoriesToolStripMenuItem";
+            this.addAndEditCategoriesToolStripMenuItem.Size = new System.Drawing.Size(179, 21);
+            this.addAndEditCategoriesToolStripMenuItem.Text = "Add and Edit Categories";
             // 
             // AnaForm
             // 
@@ -72,5 +82,6 @@
         #endregion
         private System.Windows.Forms.ToolStripMenuItem tsmiAddNewProject;
         private System.Windows.Forms.MenuStrip msAnaForm;
+        private System.Windows.Forms.ToolStripMenuItem addAndEditCategoriesToolStripMenuItem;
     }
 }

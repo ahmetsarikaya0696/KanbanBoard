@@ -38,6 +38,13 @@ namespace KanBan.UI
             NotePreview notePreview = new NotePreview(not, proje);
             flpToDo.Controls.Add(notePreview);
         }
+        private void deleteProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // emin misiniz ??
+            this.Close();
+            ProjeYoneticisi.ProjeSil(proje);
+
+        }
 
         private void flpToDo_DragEnter(object sender, DragEventArgs e)
         {
@@ -90,7 +97,6 @@ namespace KanBan.UI
         {
             e.Effect = DragDropEffects.Move;
         }
-
 
     }
 }
