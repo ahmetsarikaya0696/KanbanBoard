@@ -8,6 +8,11 @@ namespace KanBan.DATA
 {
     public class Not
     {
+        public Not()
+        {
+            SonGuncellenmeTarihi = OlusturulmaTarihi = DateTime.Now;
+        }
+
         public Not(string baslik, Kategori kategori)
         {
             Baslik = baslik;

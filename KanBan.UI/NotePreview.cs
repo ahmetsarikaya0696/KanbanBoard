@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KanBan.DATA;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,15 +14,34 @@ namespace KanBan.UI
     public partial class NotePreview : UserControl
     {
         NoteForm noteForm;
-        public NotePreview()
+        private Proje proje;
+        private Not not;
+        public bool Secilimi { get; set; }
+        public NotePreview(Not not, Proje proje)
         {
+            Secilimi = false;
+            this.proje = proje;
+            this.not = not;
             InitializeComponent();
+            lblBaslik.Text = not.Baslik;
+            lblIcerik.Text = not.Icerik;
+            tsslSonDegistirilmeTarihi.Text = not.SonGuncellenmeTarihi.ToString();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            noteForm = new NoteForm();
+            noteForm = new NoteForm(not);
+            noteForm.DegisikliklerKaydedildi += NoteForm_DegisikliklerKaydedildi;
+
+
             noteForm.ShowDialog();
+        }
+
+        private void NoteForm_DegisikliklerKaydedildi(object sender, EventArgs e)
+        {
+            lblBaslik.Text = not.Baslik;
+            lblIcerik.Text = not.Icerik;
+            tsslSonDegistirilmeTarihi.Text = not.SonGuncellenmeTarihi.ToString();
         }
 
         private void NotePreview_MouseDown(object sender, MouseEventArgs e)
@@ -33,9 +53,23 @@ namespace KanBan.UI
         {
             if (e.Button == MouseButtons.Left)
             {
-                var btn = sender as Control;
-                this.DoDragDrop(btn.Name, DragDropEffects.Move);
+                var notePreview = sender as NotePreview;
+                notePreview.BackColor = Color.Blue;
+                notePreview.Secilimi = true;
+               
+                DoDragDrop(notePreview.Name, DragDropEffects.Move);
+                notePreview.BackColor = Color.White;
+                notePreview.Secilimi = false;
+
+
             }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // silmek istediğinize emin misiniz vs. ekle daha sonra
+            ProjeYoneticisi.ProjedenNotSil(proje, not);
+            this.Parent.Controls.Remove(this);
         }
     }
 }

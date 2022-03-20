@@ -8,8 +8,9 @@ namespace KanBan.DATA
 {
     public static class ProjeYoneticisi
     {
-        public static void ProjeEkle(Proje proje)
+        public static void ProjeEkle(string ad)
         {
+            Proje proje = new Proje(ad);
             Veriler.Projeler.Add(proje);
         }
 
@@ -18,25 +19,20 @@ namespace KanBan.DATA
             Veriler.Projeler.Remove(proje);
         }
 
-
-
         public static void ProjeyeNotEkle(Proje proje, Not not)
         {
             proje.Notlar.Add(not);
         }
+
 
         public static void ProjedenNotSil(Proje proje, Not not)
         {
             proje.Notlar.Remove(not);
         }
 
-        //public static void ProjeNotunuGuncelle(Proje proje, Not not)
-        //{
-        //    proje.Notlar.Remove(not);
-        //}
-
-        public static void KategoriEkle(Kategori kategori)
+        public static void KategoriEkle(string kategoriAdı, ConsoleColor kategoriRengi)
         {
+            Kategori kategori = new Kategori(kategoriAdı, kategoriRengi);
             Veriler.Kategoriler.Add(kategori);
         }
 

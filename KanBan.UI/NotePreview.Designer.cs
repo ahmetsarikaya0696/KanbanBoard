@@ -28,38 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblProjectName = new System.Windows.Forms.Label();
-            this.lblContent = new System.Windows.Forms.Label();
+            this.lblBaslik = new System.Windows.Forms.Label();
+            this.lblIcerik = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslSonDegistirilmeTarihi = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.statusStrip1.SuspendLayout();
+            this.ssSonGuncellemeTarihi = new System.Windows.Forms.StatusStrip();
+            this.ssSonGuncellemeTarihi.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblProjectName
+            // lblBaslik
             // 
-            this.lblProjectName.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblProjectName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblProjectName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblProjectName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectName.ForeColor = System.Drawing.Color.White;
-            this.lblProjectName.Location = new System.Drawing.Point(0, 0);
-            this.lblProjectName.Name = "lblProjectName";
-            this.lblProjectName.Size = new System.Drawing.Size(380, 32);
-            this.lblProjectName.TabIndex = 0;
-            this.lblProjectName.Text = "label1";
-            this.lblProjectName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBaslik.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblBaslik.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblBaslik.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblBaslik.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaslik.ForeColor = System.Drawing.Color.White;
+            this.lblBaslik.Location = new System.Drawing.Point(0, 0);
+            this.lblBaslik.Name = "lblBaslik";
+            this.lblBaslik.Size = new System.Drawing.Size(380, 32);
+            this.lblBaslik.TabIndex = 0;
+            this.lblBaslik.Text = "label1";
+            this.lblBaslik.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblContent
+            // lblIcerik
             // 
-            this.lblContent.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.lblContent.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblContent.Location = new System.Drawing.Point(20, 32);
-            this.lblContent.Name = "lblContent";
-            this.lblContent.Size = new System.Drawing.Size(338, 227);
-            this.lblContent.TabIndex = 1;
+            this.lblIcerik.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.lblIcerik.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblIcerik.Location = new System.Drawing.Point(20, 32);
+            this.lblIcerik.Name = "lblIcerik";
+            this.lblIcerik.Size = new System.Drawing.Size(338, 227);
+            this.lblIcerik.TabIndex = 1;
             // 
             // btnEdit
             // 
@@ -83,6 +83,7 @@
             this.btnDelete.Size = new System.Drawing.Size(30, 25);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // toolStripStatusLabel1
             // 
@@ -97,32 +98,32 @@
             this.tsslSonDegistirilmeTarihi.Name = "tsslSonDegistirilmeTarihi";
             this.tsslSonDegistirilmeTarihi.Size = new System.Drawing.Size(0, 17);
             // 
-            // statusStrip1
+            // ssSonGuncellemeTarihi
             // 
-            this.statusStrip1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ssSonGuncellemeTarihi.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ssSonGuncellemeTarihi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.tsslSonDegistirilmeTarihi});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 262);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(380, 22);
-            this.statusStrip1.TabIndex = 3;
-            this.statusStrip1.Text = "statusStrip1";
+            this.ssSonGuncellemeTarihi.Location = new System.Drawing.Point(0, 262);
+            this.ssSonGuncellemeTarihi.Name = "ssSonGuncellemeTarihi";
+            this.ssSonGuncellemeTarihi.Size = new System.Drawing.Size(380, 22);
+            this.ssSonGuncellemeTarihi.TabIndex = 3;
+            this.ssSonGuncellemeTarihi.Text = "statusStrip1";
             // 
             // NotePreview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.ssSonGuncellemeTarihi);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.lblContent);
-            this.Controls.Add(this.lblProjectName);
+            this.Controls.Add(this.lblIcerik);
+            this.Controls.Add(this.lblBaslik);
             this.Name = "NotePreview";
             this.Size = new System.Drawing.Size(380, 284);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NotePreview_MouseDown);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.ssSonGuncellemeTarihi.ResumeLayout(false);
+            this.ssSonGuncellemeTarihi.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,12 +131,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblProjectName;
-        private System.Windows.Forms.Label lblContent;
+        private System.Windows.Forms.Label lblBaslik;
+        private System.Windows.Forms.Label lblIcerik;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel tsslSonDegistirilmeTarihi;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip ssSonGuncellemeTarihi;
     }
 }

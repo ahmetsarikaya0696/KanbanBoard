@@ -9,7 +9,6 @@ namespace KanBan.DATA
     public static class Veriler
     {
         public static List<Proje> Projeler { get; set; } = new List<Proje>();
-        public static List<Not> Notlar { get; set; } = new List<Not>();
         public static List<Kategori> Kategoriler { get; set; } = new List<Kategori>();
 
     }

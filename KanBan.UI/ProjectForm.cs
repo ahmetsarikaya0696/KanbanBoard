@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KanBan.DATA;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,24 +13,25 @@ namespace KanBan.UI
 {
     public partial class ProjectForm : Form
     {
+        private Proje proje;
 
-        public ProjectForm()
+        public ProjectForm(Proje proje)
         {
+            this.proje = proje;
             InitializeComponent();
             lblToDo.Width = lblDoing.Width = lblDone.Width = flpToDo.Width = flpDoing.Width = flpDone.Width = ClientSize.Width;
             flpToDo.Height = flpDoing.Height = flpDone.Height = ClientSize.Height;
+            this.Text = proje.Ad;
         }
 
         private void tsmiAddNote_Click(object sender, EventArgs e)
         {
-            flpToDo.Controls.Add(new NotePreview() { Width = flpToDo.Width - 10, Height = (flpToDo.Width - 10) / 2 });
-            //foreach (var control in flpToDo.Controls)
-            //{
-            //    if (control is NotePreview)
-            //    {
-            //        MessageBox.Show(((NotePreview)control).Name);
-            //    }
-            //}
+            Not not = new Not();
+            
+            ProjeYoneticisi.ProjeyeNotEkle(proje, not);
+
+            flpToDo.Controls.Add(new NotePreview(not, proje) { Width = flpToDo.Width - 10, Height = (flpToDo.Width - 10) / 2 });
+
         }
 
         private void flpToDo_DragEnter(object sender, DragEventArgs e)
@@ -68,7 +70,9 @@ namespace KanBan.UI
                 return;
 
             var name = e.Data.GetData(typeof(string)) as string;
-            var ctr = this.Controls.Find(name, true).FirstOrDefault();
+            //var ctr = this.Controls.Find(name, true).FirstOrDefault();
+            //var ctr = this.Controls.Find(name, true).Where(x => ((NotePreview)x).BackColor == Color.Blue).FirstOrDefault();
+            var ctr = this.Controls.Find(name, true).Where(x => ((NotePreview)x).Secilimi == true).FirstOrDefault();
             if (ctr != null)
             {
                 ctr.Parent.Controls.Remove(ctr);

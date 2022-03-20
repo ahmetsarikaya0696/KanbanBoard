@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KanBan.DATA;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,7 +23,9 @@ namespace KanBan.UI
         {
             if (!string.IsNullOrEmpty(txtprojectName.Text))
             {
-                // project p = new project() ...
+                ProjeYoneticisi.ProjeEkle(txtprojectName.Text);
+                txtprojectName.Clear();
+                
                 if (ProjeEklendi != null) ProjeEklendi(this, e);
             }
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KanBan.DATA;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,7 +31,9 @@ namespace KanBan.UI
 
         private void Pfh_ProjeEklendi(object sender, EventArgs e)
         {
-            ProjectForm projectForm = new ProjectForm();
+            Proje proje = Veriler.Projeler.Last();
+            
+            ProjectForm projectForm = new ProjectForm(proje);
 
             projectForm.MdiParent = this;
             projectForm.Show();

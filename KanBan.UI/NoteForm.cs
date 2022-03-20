@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KanBan.DATA;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,23 +13,32 @@ namespace KanBan.UI
 {
     public partial class NoteForm : Form
     {
-        public NoteForm()
+        private Not not;
+        public event EventHandler DegisikliklerKaydedildi;
+        public NoteForm(Not not)
         {
+            this.not = not;
             InitializeComponent();
-            txtNote.MaxLength = 280;
-            tsslKalanKarakterSayisi.Text = $"0   / {txtNote.MaxLength}";
+            txtIcerik.MaxLength = 140;
+            tsslKalanKarakterSayisi.Text = $"0   / {txtIcerik.MaxLength}";
         }
 
         private void txtNote_TextChanged(object sender, EventArgs e)
         {
-            tsslKalanKarakterSayisi.Text =  $"{(txtNote.MaxLength - txtNote.Text.Length)} / {txtNote.MaxLength}";
+            tsslKalanKarakterSayisi.Text =  $"{(txtIcerik.MaxLength - txtIcerik.Text.Length)} / {txtIcerik.MaxLength}";
         }
 
-        private void saveAndExitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveChangesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // notu veri tabanına kaydet
-            // notun txt ve kategorilerini notepreview item a kaydet
-
+            if (!string.IsNullOrEmpty(txtBaslik.Text))
+            {
+                not.Baslik = txtBaslik.Text;
+                not.Icerik = txtIcerik.Text;
+                //not.Kategori =
+                not.SonGuncellenmeTarihi = DateTime.Now;
+                
+                if (DegisikliklerKaydedildi != null) DegisikliklerKaydedildi(this, e);
+            }
         }
     }
 }

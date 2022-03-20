@@ -134,5 +134,11 @@
   <ItemGroup>
     <None Include="Resources\floppy-disk.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KanBan.DATA\KanBan.DATA.csproj">
+      <Project>{2655c4dd-6078-4c70-b4cf-f617dbf1b73d}</Project>
+      <Name>KanBan.DATA</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
