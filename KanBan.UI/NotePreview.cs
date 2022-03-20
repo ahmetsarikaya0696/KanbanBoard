@@ -17,10 +17,9 @@ namespace KanBan.UI
         private Proje proje;
         private Not not;
         public bool Secilimi { get; set; }
-        public NotePreview(Not not, Proje proje)
+        public NotePreview(Not not)
         {
             Secilimi = false;
-            this.proje = proje;
             this.not = not;
             InitializeComponent();
             lblBaslik.Text = not.Baslik;
@@ -30,18 +29,8 @@ namespace KanBan.UI
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            noteForm = new NoteForm(not);
-            noteForm.DegisikliklerKaydedildi += NoteForm_DegisikliklerKaydedildi;
-
-
+           NoteForm noteForm = new NoteForm(not);
             noteForm.ShowDialog();
-        }
-
-        private void NoteForm_DegisikliklerKaydedildi(object sender, EventArgs e)
-        {
-            lblBaslik.Text = not.Baslik;
-            lblIcerik.Text = not.Icerik;
-            tsslSonDegistirilmeTarihi.Text = not.SonGuncellenmeTarihi.ToString();
         }
 
         private void NotePreview_MouseDown(object sender, MouseEventArgs e)

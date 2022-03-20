@@ -14,6 +14,7 @@ namespace KanBan.UI
     public partial class ProjectForm : Form
     {
         private Proje proje;
+        private Not not;
 
         public ProjectForm(Proje proje)
         {
@@ -26,12 +27,16 @@ namespace KanBan.UI
 
         private void tsmiAddNote_Click(object sender, EventArgs e)
         {
-            Not not = new Not();
-            
-            ProjeYoneticisi.ProjeyeNotEkle(proje, not);
+            not = new Not();
+            NoteForm noteForm = new NoteForm(proje,not);
+            noteForm.DegisikliklerKaydedildi += NoteForm_DegisikliklerKaydedildi;
+            noteForm.ShowDialog();
+        }
 
-            flpToDo.Controls.Add(new NotePreview(not, proje) { Width = flpToDo.Width - 10, Height = (flpToDo.Width - 10) / 2 });
-
+        private void NoteForm_DegisikliklerKaydedildi(object sender, EventArgs e)
+        {
+            NotePreview notePreview = new NotePreview(not);
+            flpToDo.Controls.Add(notePreview);
         }
 
         private void flpToDo_DragEnter(object sender, DragEventArgs e)
