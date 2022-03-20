@@ -13,14 +13,14 @@ namespace KanBan.UI
 {
     public partial class NotePreview : UserControl
     {
-        NoteForm noteForm;
         private Proje proje;
         private Not not;
         public bool Secilimi { get; set; }
-        public NotePreview(Not not)
+        public NotePreview(Not not, Proje proje)
         {
             Secilimi = false;
             this.not = not;
+            this.proje = proje;
             InitializeComponent();
             lblBaslik.Text = not.Baslik;
             lblIcerik.Text = not.Icerik;
@@ -31,6 +31,12 @@ namespace KanBan.UI
         {
            NoteForm noteForm = new NoteForm(not);
             noteForm.ShowDialog();
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // silmek istediğinize emin misiniz vs. ekle daha sonra
+            ProjeYoneticisi.ProjedenNotSil(proje, not);
+            this.Parent.Controls.Remove(this);
         }
 
         private void NotePreview_MouseDown(object sender, MouseEventArgs e)
@@ -54,11 +60,5 @@ namespace KanBan.UI
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            // silmek istediğinize emin misiniz vs. ekle daha sonra
-            ProjeYoneticisi.ProjedenNotSil(proje, not);
-            this.Parent.Controls.Remove(this);
-        }
     }
 }

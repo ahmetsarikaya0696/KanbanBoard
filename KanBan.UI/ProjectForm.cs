@@ -28,14 +28,14 @@ namespace KanBan.UI
         private void tsmiAddNote_Click(object sender, EventArgs e)
         {
             not = new Not();
-            NoteForm noteForm = new NoteForm(proje,not);
+            NoteForm noteForm = new NoteForm(proje, not);
             noteForm.DegisikliklerKaydedildi += NoteForm_DegisikliklerKaydedildi;
             noteForm.ShowDialog();
         }
 
         private void NoteForm_DegisikliklerKaydedildi(object sender, EventArgs e)
         {
-            NotePreview notePreview = new NotePreview(not);
+            NotePreview notePreview = new NotePreview(not, proje);
             flpToDo.Controls.Add(notePreview);
         }
 
