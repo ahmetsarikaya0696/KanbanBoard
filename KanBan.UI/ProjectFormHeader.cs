@@ -23,7 +23,7 @@ namespace KanBan.UI
         {
             if (!string.IsNullOrEmpty(txtprojectName.Text))
             {
-                ProjeYoneticisi.ProjeEkle(txtprojectName.Text);
+                ProjectAdmin.AddProject(txtprojectName.Text);
                 txtprojectName.Clear();
                 
                 if (ProjeEklendi != null) ProjeEklendi(this, e);

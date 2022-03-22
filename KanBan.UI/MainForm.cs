@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace KanBan.UI
 {
-    public partial class AnaForm : Form
+    public partial class MainForm : Form
     {
         private bool isFormOpen { get; set; }
-        public AnaForm()
+        public MainForm()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
@@ -31,9 +31,9 @@ namespace KanBan.UI
 
         private void Pfh_ProjeEklendi(object sender, EventArgs e)
         {
-            Proje proje = Veriler.Projeler.Last();
-            
-            ProjectForm projectForm = new ProjectForm(proje);
+            Project project = Datass.Projects.Last();
+
+            ProjectForm projectForm = new ProjectForm(project);
 
             projectForm.MdiParent = this;
             projectForm.Show();
@@ -45,18 +45,24 @@ namespace KanBan.UI
         private void ProjectForm_Disposed(object sender, EventArgs e)
         {
             Listele();
-
         }
 
         private void Listele()
         {
             if (isFormOpen)
-               LayoutMdi(MdiLayout.TileVertical);
+                LayoutMdi(MdiLayout.TileVertical);
         }
 
         private void AnaForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             isFormOpen = false;
+        }
+
+        private void addAndEditCategoriesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Category category = new Category();
+            CategoryForm categoryForm = new CategoryForm(category);
+            categoryForm.ShowDialog();
         }
     }
 }

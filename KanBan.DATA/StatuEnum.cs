@@ -8,8 +8,8 @@ namespace KanBan.DATA
 {
     public enum StatuEnum
     {
-        todo,
-        doing,
-        done
+        todo = 0,
+        doing = 1,
+        done = 2
     }
 }

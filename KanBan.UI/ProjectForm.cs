@@ -13,36 +13,42 @@ namespace KanBan.UI
 {
     public partial class ProjectForm : Form
     {
-        private Proje proje;
-        private Not not;
-
-        public ProjectForm(Proje proje)
+        private Project project;
+        private Note note;
+        private NoteForm noteForm;
+        public ProjectForm(Project project)
         {
-            this.proje = proje;
+            this.project = project;
             InitializeComponent();
             lblToDo.Width = lblDoing.Width = lblDone.Width = flpToDo.Width = flpDoing.Width = flpDone.Width = ClientSize.Width;
             flpToDo.Height = flpDoing.Height = flpDone.Height = ClientSize.Height;
-            this.Text = proje.Ad;
+            this.Text = project.Name;
+
+            flpToDo.Tag = StatuEnum.todo;
+            flpDoing.Tag = StatuEnum.doing;
+            flpDone.Tag = StatuEnum.done;
         }
+
+      
 
         private void tsmiAddNote_Click(object sender, EventArgs e)
         {
-            not = new Not();
-            NoteForm noteForm = new NoteForm(proje, not);
-            noteForm.DegisikliklerKaydedildi += NoteForm_DegisikliklerKaydedildi;
-            noteForm.ShowDialog();
+            note = new Note();
+            noteForm = new NoteForm(project, note);
+            flpToDo.Controls.Add(noteForm);
+
         }
 
         private void NoteForm_DegisikliklerKaydedildi(object sender, EventArgs e)
         {
-            NotePreview notePreview = new NotePreview(not, proje);
-            flpToDo.Controls.Add(notePreview);
+            //NotePreview notePreview = new NotePreview(not, proje);
+            //flpToDo.Controls.Add(notePreview);
         }
         private void deleteProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // emin misiniz ??
             this.Close();
-            ProjeYoneticisi.ProjeSil(proje);
+            ProjectAdmin.DeleteProject(project);
 
         }
 
@@ -82,9 +88,7 @@ namespace KanBan.UI
                 return;
 
             var name = e.Data.GetData(typeof(string)) as string;
-            //var ctr = this.Controls.Find(name, true).FirstOrDefault();
-            //var ctr = this.Controls.Find(name, true).Where(x => ((NotePreview)x).BackColor == Color.Blue).FirstOrDefault();
-            var ctr = this.Controls.Find(name, true).Where(x => ((NotePreview)x).Secilimi == true).FirstOrDefault();
+            var ctr = Controls.Find(name, true).Where(x => ((NoteForm)x).Selected).FirstOrDefault();
             if (ctr != null)
             {
                 ctr.Parent.Controls.Remove(ctr);

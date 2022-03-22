@@ -11,53 +11,72 @@ using System.Windows.Forms;
 
 namespace KanBan.UI
 {
-    public partial class NoteForm : Form
+    public partial class NoteForm : UserControl
     {
-        public event EventHandler DegisikliklerKaydedildi;
+        private Note note;
+        private Project project;
 
-        private Proje proje;
-        private Not not;
-
-        public NoteForm(Proje proje, Not not)
+        public NoteForm(Project project, Note note)
         {
-            this.proje = proje;
-            this.not = not;
+            this.note = note;
+            this.project = project;
+            ProjectAdmin.AddNoteToProject(project, note);
             InitializeComponent();
-            txtIcerik.MaxLength = 140;
-            tsslKalanKarakterSayisi.Text = $"0   / {txtIcerik.MaxLength}";
-        }
-        //copyconstructor ile kodları azalt
-        public NoteForm(Not not)
-        {
-            this.not = not;
-            InitializeComponent();
-            txtBaslik.Text = not.Baslik;
-            txtIcerik.Text = not.Icerik;
-            //kategori vs
-            txtIcerik.MaxLength = 140;
-            tsslKalanKarakterSayisi.Text = $"0   / {txtIcerik.MaxLength}";
+            CharLeft.Text = "0 / 140";
+            cboCategories.DataSource = Datass.Categories;
         }
 
-        private void txtNote_TextChanged(object sender, EventArgs e)
-        {
-            tsslKalanKarakterSayisi.Text = $"{(txtIcerik.MaxLength - txtIcerik.Text.Length)} / {txtIcerik.MaxLength}";
-        }
+        public bool Selected { get; private set; }
 
-        private void saveChangesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MouseDownMetot(object sender, MouseEventArgs e)
         {
-            if (txtBaslik.Text.Trim() == "")
+            if (e.Button == MouseButtons.Left)
             {
-                MessageBox.Show("Başlık boş olamaz");
-                return;
+                note.Statu = (StatuEnum)Parent.Tag;
+               
+                var noteForm = sender as NoteForm;
+                noteForm.BackColor = Color.Blue;
+                noteForm.Selected = true;
+
+                // her şey dodragdroptan önce ve sonra belli oluyor
+                DoDragDrop(noteForm.Name, DragDropEffects.Move);
+                
+                noteForm.BackColor = Color.White;
+                noteForm.Selected = false;
+
+                note.Statu = (StatuEnum)Parent.Tag;
             }
+        }
 
-            not.Baslik = txtBaslik.Text.Trim();
-            not.Icerik = txtIcerik.Text.Trim();
-            //not.Kategori =
-            not.SonGuncellenmeTarihi = DateTime.Now;
-            ProjeYoneticisi.ProjeyeNotEkle(proje, not);
-            if (DegisikliklerKaydedildi != null) DegisikliklerKaydedildi(this, e);
+        private void NoteForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            MouseDownMetot(sender, e);
+        }
 
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            if (txtBaslik.Text.Trim() != "" && cboCategories.SelectedIndex != -1)
+            {
+                note.Title = txtBaslik.Text.Trim();
+                note.Icerik = txtIcerik.Text;
+                note.Category = (Category)cboCategories.SelectedItem;
+            }
+        }
+
+        private void txtIcerik_TextChanged(object sender, EventArgs e)
+        {
+            CharLeft.Text = $"{txtIcerik.TextLength} / 140";
+        }
+
+        private void cboCategories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            panel1.BackColor = ((Category)cboCategories.SelectedItem).Color;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            ProjectAdmin.DeleteNoteFromProject(project, note);
+            Parent.Controls.Remove(this);
         }
     }
 }

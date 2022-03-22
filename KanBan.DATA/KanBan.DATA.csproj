@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,14 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DurumEnum.cs" />
-    <Compile Include="Kategori.cs" />
-    <Compile Include="Not.cs" />
-    <Compile Include="Proje.cs" />
-    <Compile Include="ProjeYoneticisi.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="Note.cs" />
+    <Compile Include="Project.cs" />
+    <Compile Include="ProjectAdmin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatuEnum.cs" />
-    <Compile Include="Veriler.cs" />
+    <Compile Include="Datass.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

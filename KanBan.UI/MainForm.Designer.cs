@@ -1,6 +1,6 @@
 ﻿namespace KanBan.UI
 {
-    partial class AnaForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -60,8 +60,9 @@
             this.addAndEditCategoriesToolStripMenuItem.Name = "addAndEditCategoriesToolStripMenuItem";
             this.addAndEditCategoriesToolStripMenuItem.Size = new System.Drawing.Size(179, 21);
             this.addAndEditCategoriesToolStripMenuItem.Text = "Add and Edit Categories";
+            this.addAndEditCategoriesToolStripMenuItem.Click += new System.EventHandler(this.addAndEditCategoriesToolStripMenuItem_Click);
             // 
-            // AnaForm
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -69,7 +70,8 @@
             this.Controls.Add(this.msAnaForm);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.msAnaForm;
-            this.Name = "AnaForm";
+            this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AnaForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AnaForm_FormClosing);
             this.msAnaForm.ResumeLayout(false);

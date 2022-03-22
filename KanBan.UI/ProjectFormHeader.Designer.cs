@@ -68,6 +68,7 @@
             this.Controls.Add(this.txtprojectName);
             this.Controls.Add(this.label1);
             this.Name = "ProjectFormHeader";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ProjectFormHeader";
             this.ResumeLayout(false);
             this.PerformLayout();
