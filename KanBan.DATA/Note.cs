@@ -10,16 +10,11 @@ namespace KanBan.DATA
     {
         public Note()
         {
+            Id = Guid.NewGuid();
             LastUpdateDate = CreatedDate = DateTime.Now;
         }
 
-        public Note(string title, Category category)
-        {
-            Title = title;
-            Category = category;
-            LastUpdateDate = CreatedDate = DateTime.Now;
-        }
-
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public string Icerik { get; set; }
         public StatuEnum Statu { get; set; }

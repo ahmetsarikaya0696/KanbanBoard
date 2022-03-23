@@ -19,6 +19,7 @@ namespace KanBan.UI
         public NoteForm(Project project, Note note)
         {
             this.note = note;
+            note.Statu = StatuEnum.todo;
             this.project = project;
             ProjectAdmin.AddNoteToProject(project, note);
             InitializeComponent();
@@ -32,15 +33,15 @@ namespace KanBan.UI
         {
             if (e.Button == MouseButtons.Left)
             {
-                note.Statu = (StatuEnum)Parent.Tag;
-               
+
+
                 var noteForm = sender as NoteForm;
                 noteForm.BackColor = Color.Blue;
                 noteForm.Selected = true;
 
                 // her şey dodragdroptan önce ve sonra belli oluyor
                 DoDragDrop(noteForm.Name, DragDropEffects.Move);
-                
+
                 noteForm.BackColor = Color.White;
                 noteForm.Selected = false;
 
@@ -60,6 +61,11 @@ namespace KanBan.UI
                 note.Title = txtBaslik.Text.Trim();
                 note.Icerik = txtIcerik.Text;
                 note.Category = (Category)cboCategories.SelectedItem;
+                MessageBox.Show("Changes have been succesfully saved!");
+            }
+            else
+            {
+                MessageBox.Show("Changes haven't been saved!");
             }
         }
 
@@ -75,8 +81,12 @@ namespace KanBan.UI
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            ProjectAdmin.DeleteNoteFromProject(project, note);
-            Parent.Controls.Remove(this);
+            DialogResult dr = MessageBox.Show("Are you sure?", "Delete Approval", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                ProjectAdmin.DeleteNoteFromProject(project, note);
+                Parent.Controls.Remove(this);
+            }
         }
     }
 }

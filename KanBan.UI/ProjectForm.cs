@@ -29,7 +29,7 @@ namespace KanBan.UI
             flpDone.Tag = StatuEnum.done;
         }
 
-      
+
 
         private void tsmiAddNote_Click(object sender, EventArgs e)
         {
@@ -46,9 +46,12 @@ namespace KanBan.UI
         }
         private void deleteProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // emin misiniz ??
-            this.Close();
-            ProjectAdmin.DeleteProject(project);
+            DialogResult dr = MessageBox.Show("Are you sure?", "Delete Approval", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                ProjectAdmin.DeleteProject(project);
+                this.Close();
+            }
 
         }
 

@@ -21,12 +21,16 @@ namespace KanBan.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtprojectName.Text))
+            if (txtprojectName.Text.Trim() != "")
             {
-                ProjectAdmin.AddProject(txtprojectName.Text);
+                ProjectAdmin.AddProject(txtprojectName.Text.Trim());
                 txtprojectName.Clear();
-                
+
                 if (ProjeEklendi != null) ProjeEklendi(this, e);
+            }
+            else
+            {
+                MessageBox.Show("Project title can't be empty!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

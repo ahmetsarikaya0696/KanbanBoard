@@ -43,6 +43,14 @@ namespace KanBan.UI
                 ProjectAdmin.AddCategory(category);
                 MessageBox.Show("Category added!");
             }
+            else if (txtCategoryName.Text.Trim() == "")
+            {
+                MessageBox.Show("Category name can't be empty!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Color can't be empty!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
