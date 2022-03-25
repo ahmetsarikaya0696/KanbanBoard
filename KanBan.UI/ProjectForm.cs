@@ -102,6 +102,7 @@ namespace KanBan.UI
         private void ProjectForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             project.isOpen = false;
+            KanbanData.passiveProjects.Add(project);   
         }
     }
 }

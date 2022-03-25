@@ -24,13 +24,13 @@ namespace KanBan.UI
             isFormOpen = true;
             this.WindowState = FormWindowState.Maximized;
             ReadKanbanDatas();
-            BindingList<Project> passiveProjects = new BindingList<Project>(); // temp list for closed projects
+             // temp list for closed projects
             foreach (Project item in KanbanData.Projects)
             {
                 if (!item.isOpen)
-                    passiveProjects.Add(item);
+                    KanbanData.passiveProjects.Add(item);
             }
-            lstClosedProjects.DataSource = passiveProjects;
+            lstClosedProjects.DataSource = KanbanData.passiveProjects;
         }
 
 
@@ -109,6 +109,20 @@ namespace KanBan.UI
         private void tsmiShowClosedProjects_Click(object sender, EventArgs e)
         {
             lstClosedProjects.Visible = !lstClosedProjects.Visible;
+        }
+
+        private void lstClosedProjects_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lstClosedProjects.SelectedIndex != -1)
+            {
+                var selectedProject = lstClosedProjects.SelectedItem as Project;
+                ProjectForm projectForm = new ProjectForm(selectedProject);
+                KanbanData.passiveProjects.Remove(selectedProject);
+                selectedProject.isOpen = true;
+                projectForm.MdiParent = this;
+                projectForm.Show();
+                Listele();
+            }
         }
     }
 }

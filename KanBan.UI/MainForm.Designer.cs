@@ -31,8 +31,8 @@
             this.msAnaForm = new System.Windows.Forms.MenuStrip();
             this.tsmiAddNewProject = new System.Windows.Forms.ToolStripMenuItem();
             this.addAndEditCategoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lstClosedProjects = new System.Windows.Forms.ListBox();
             this.tsmiShowClosedProjects = new System.Windows.Forms.ToolStripMenuItem();
+            this.lstClosedProjects = new System.Windows.Forms.ListBox();
             this.msAnaForm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +65,13 @@
             this.addAndEditCategoriesToolStripMenuItem.Text = "Add and Edit Categories";
             this.addAndEditCategoriesToolStripMenuItem.Click += new System.EventHandler(this.addAndEditCategoriesToolStripMenuItem_Click);
             // 
+            // tsmiShowClosedProjects
+            // 
+            this.tsmiShowClosedProjects.Name = "tsmiShowClosedProjects";
+            this.tsmiShowClosedProjects.Size = new System.Drawing.Size(145, 21);
+            this.tsmiShowClosedProjects.Text = "Show Closed Projects";
+            this.tsmiShowClosedProjects.Click += new System.EventHandler(this.tsmiShowClosedProjects_Click);
+            // 
             // lstClosedProjects
             // 
             this.lstClosedProjects.Dock = System.Windows.Forms.DockStyle.Left;
@@ -74,13 +81,7 @@
             this.lstClosedProjects.Size = new System.Drawing.Size(202, 359);
             this.lstClosedProjects.TabIndex = 4;
             this.lstClosedProjects.Visible = false;
-            // 
-            // tsmiShowClosedProjects
-            // 
-            this.tsmiShowClosedProjects.Name = "tsmiShowClosedProjects";
-            this.tsmiShowClosedProjects.Size = new System.Drawing.Size(145, 21);
-            this.tsmiShowClosedProjects.Text = "Show Closed Projects";
-            this.tsmiShowClosedProjects.Click += new System.EventHandler(this.tsmiShowClosedProjects_Click);
+            this.lstClosedProjects.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstClosedProjects_MouseDoubleClick);
             // 
             // MainForm
             // 
