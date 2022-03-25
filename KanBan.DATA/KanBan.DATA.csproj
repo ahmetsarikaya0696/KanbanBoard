@@ -49,7 +49,7 @@
     <Compile Include="ProjectAdmin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatuEnum.cs" />
-    <Compile Include="Datass.cs" />
+    <Compile Include="KanbanData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

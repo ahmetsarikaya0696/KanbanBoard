@@ -21,5 +21,6 @@ namespace KanBan.DATA
         public Category Category { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime LastUpdateDate { get; set; }
+        public bool isNoteSavedOnce = false;
     }
 }

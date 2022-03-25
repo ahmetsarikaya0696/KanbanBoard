@@ -33,6 +33,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnChooseColor = new System.Windows.Forms.Button();
             this.btnAddCategory = new System.Windows.Forms.Button();
+            this.lstCategories = new System.Windows.Forms.ListBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -48,7 +50,7 @@
             // 
             this.txtCategoryName.Location = new System.Drawing.Point(99, 10);
             this.txtCategoryName.Name = "txtCategoryName";
-            this.txtCategoryName.Size = new System.Drawing.Size(153, 20);
+            this.txtCategoryName.Size = new System.Drawing.Size(176, 20);
             this.txtCategoryName.TabIndex = 1;
             // 
             // label2
@@ -62,14 +64,13 @@
             // 
             // btnChooseColor
             // 
-            this.btnChooseColor.BackgroundImage = global::KanBan.UI.Properties.Resources.painting_palette;
             this.btnChooseColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnChooseColor.Location = new System.Drawing.Point(99, 36);
             this.btnChooseColor.Name = "btnChooseColor";
             this.btnChooseColor.Size = new System.Drawing.Size(30, 25);
             this.btnChooseColor.TabIndex = 2;
             this.btnChooseColor.UseVisualStyleBackColor = true;
-            this.btnChooseColor.Click += new System.EventHandler(this.button1_Click);
+            this.btnChooseColor.Click += new System.EventHandler(this.btnChooseColor_Click);
             // 
             // btnAddCategory
             // 
@@ -81,18 +82,38 @@
             this.btnAddCategory.UseVisualStyleBackColor = true;
             this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
+            // lstCategories
+            // 
+            this.lstCategories.FormattingEnabled = true;
+            this.lstCategories.Location = new System.Drawing.Point(16, 106);
+            this.lstCategories.Name = "lstCategories";
+            this.lstCategories.Size = new System.Drawing.Size(259, 147);
+            this.lstCategories.TabIndex = 4;
+            this.lstCategories.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstCategories_MouseDoubleClick);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(190, 67);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(85, 23);
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // CategoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(259, 101);
+            this.ClientSize = new System.Drawing.Size(287, 267);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.lstCategories);
             this.Controls.Add(this.btnAddCategory);
             this.Controls.Add(this.btnChooseColor);
             this.Controls.Add(this.txtCategoryName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(275, 140);
-            this.MinimumSize = new System.Drawing.Size(275, 140);
             this.Name = "CategoryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CategoryForm";
@@ -108,5 +129,7 @@
         private System.Windows.Forms.Button btnChooseColor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddCategory;
+        private System.Windows.Forms.ListBox lstCategories;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

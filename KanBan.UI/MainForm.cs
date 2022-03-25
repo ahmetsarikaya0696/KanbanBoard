@@ -31,7 +31,7 @@ namespace KanBan.UI
 
         private void Pfh_ProjeEklendi(object sender, EventArgs e)
         {
-            Project project = Datass.Projects.Last();
+            Project project = KanbanData.Projects.Last();
 
             ProjectForm projectForm = new ProjectForm(project);
 
@@ -60,8 +60,7 @@ namespace KanBan.UI
 
         private void addAndEditCategoriesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Category category = new Category();
-            CategoryForm categoryForm = new CategoryForm(category);
+            CategoryForm categoryForm = new CategoryForm();
             categoryForm.ShowDialog();
         }
     }

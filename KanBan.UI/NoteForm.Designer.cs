@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CharLeft = new System.Windows.Forms.Label();
             this.cboCategories = new System.Windows.Forms.ComboBox();
@@ -35,13 +36,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBaslik = new System.Windows.Forms.TextBox();
             this.txtIcerik = new System.Windows.Forms.TextBox();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnSaveChanges = new System.Windows.Forms.Button();
+            this.ssSonGuncellemeTarihi = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslSonDegistirilmeTarihi = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ssSonGuncellemeTarihi = new System.Windows.Forms.StatusStrip();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnSaveChanges = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toDoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.doneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.ssSonGuncellemeTarihi.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -119,6 +126,32 @@
             this.txtIcerik.TabIndex = 14;
             this.txtIcerik.TextChanged += new System.EventHandler(this.txtIcerik_TextChanged);
             // 
+            // ssSonGuncellemeTarihi
+            // 
+            this.ssSonGuncellemeTarihi.AutoSize = false;
+            this.ssSonGuncellemeTarihi.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ssSonGuncellemeTarihi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.tsslSonDegistirilmeTarihi});
+            this.ssSonGuncellemeTarihi.Location = new System.Drawing.Point(0, 228);
+            this.ssSonGuncellemeTarihi.Name = "ssSonGuncellemeTarihi";
+            this.ssSonGuncellemeTarihi.Size = new System.Drawing.Size(330, 22);
+            this.ssSonGuncellemeTarihi.TabIndex = 13;
+            this.ssSonGuncellemeTarihi.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.White;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(110, 17);
+            this.toolStripStatusLabel1.Text = "Last Update Time";
+            // 
+            // tsslSonDegistirilmeTarihi
+            // 
+            this.tsslSonDegistirilmeTarihi.ForeColor = System.Drawing.Color.White;
+            this.tsslSonDegistirilmeTarihi.Name = "tsslSonDegistirilmeTarihi";
+            this.tsslSonDegistirilmeTarihi.Size = new System.Drawing.Size(0, 17);
+            // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -143,31 +176,43 @@
             this.btnSaveChanges.UseVisualStyleBackColor = false;
             this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
-            // toolStripStatusLabel1
+            // contextMenuStrip1
             // 
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.White;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(141, 17);
-            this.toolStripStatusLabel1.Text = "Son Değiştirilme Tarihi:";
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
             // 
-            // tsslSonDegistirilmeTarihi
+            // copyToolStripMenuItem
             // 
-            this.tsslSonDegistirilmeTarihi.ForeColor = System.Drawing.Color.White;
-            this.tsslSonDegistirilmeTarihi.Name = "tsslSonDegistirilmeTarihi";
-            this.tsslSonDegistirilmeTarihi.Size = new System.Drawing.Size(0, 17);
+            this.copyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toDoToolStripMenuItem,
+            this.dToolStripMenuItem,
+            this.doneToolStripMenuItem});
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
             // 
-            // ssSonGuncellemeTarihi
+            // toDoToolStripMenuItem
             // 
-            this.ssSonGuncellemeTarihi.AutoSize = false;
-            this.ssSonGuncellemeTarihi.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ssSonGuncellemeTarihi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.tsslSonDegistirilmeTarihi});
-            this.ssSonGuncellemeTarihi.Location = new System.Drawing.Point(0, 228);
-            this.ssSonGuncellemeTarihi.Name = "ssSonGuncellemeTarihi";
-            this.ssSonGuncellemeTarihi.Size = new System.Drawing.Size(330, 22);
-            this.ssSonGuncellemeTarihi.TabIndex = 13;
-            this.ssSonGuncellemeTarihi.Text = "statusStrip1";
+            this.toDoToolStripMenuItem.Name = "toDoToolStripMenuItem";
+            this.toDoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.toDoToolStripMenuItem.Text = "todo";
+            this.toDoToolStripMenuItem.Click += new System.EventHandler(this.toDoToolStripMenuItem_Click);
+            // 
+            // dToolStripMenuItem
+            // 
+            this.dToolStripMenuItem.Name = "dToolStripMenuItem";
+            this.dToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dToolStripMenuItem.Text = "doing";
+            this.dToolStripMenuItem.Click += new System.EventHandler(this.dToolStripMenuItem_Click);
+            // 
+            // doneToolStripMenuItem
+            // 
+            this.doneToolStripMenuItem.Name = "doneToolStripMenuItem";
+            this.doneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.doneToolStripMenuItem.Text = "done";
+            this.doneToolStripMenuItem.Click += new System.EventHandler(this.doneToolStripMenuItem_Click);
             // 
             // NoteForm
             // 
@@ -186,6 +231,7 @@
             this.panel1.PerformLayout();
             this.ssSonGuncellemeTarihi.ResumeLayout(false);
             this.ssSonGuncellemeTarihi.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -204,5 +250,10 @@
         private System.Windows.Forms.StatusStrip ssSonGuncellemeTarihi;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel tsslSonDegistirilmeTarihi;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toDoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem doneToolStripMenuItem;
     }
 }

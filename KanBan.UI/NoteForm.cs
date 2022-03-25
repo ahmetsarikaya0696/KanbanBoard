@@ -19,12 +19,16 @@ namespace KanBan.UI
         public NoteForm(Project project, Note note)
         {
             this.note = note;
-            note.Statu = StatuEnum.todo;
+            this.note.Statu = StatuEnum.todo;
             this.project = project;
             ProjectAdmin.AddNoteToProject(project, note);
             InitializeComponent();
             CharLeft.Text = "0 / 140";
-            cboCategories.DataSource = Datass.Categories;
+            cboCategories.DataSource = KanbanData.Categories;
+            cboCategories.ValueMember = "Id";
+            cboCategories.DisplayMember = "Name";
+            tsslSonDegistirilmeTarihi.Text = note.LastUpdateDate.ToString();
+
         }
 
         public bool Selected { get; private set; }
@@ -33,8 +37,6 @@ namespace KanBan.UI
         {
             if (e.Button == MouseButtons.Left)
             {
-
-
                 var noteForm = sender as NoteForm;
                 noteForm.BackColor = Color.Blue;
                 noteForm.Selected = true;
@@ -46,6 +48,11 @@ namespace KanBan.UI
                 noteForm.Selected = false;
 
                 note.Statu = (StatuEnum)Parent.Tag;
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                NoteForm noteform = (NoteForm)sender;
+                contextMenuStrip1.Show(noteform, new Point(e.X, e.Y));
             }
         }
 
@@ -61,7 +68,10 @@ namespace KanBan.UI
                 note.Title = txtBaslik.Text.Trim();
                 note.Icerik = txtIcerik.Text;
                 note.Category = (Category)cboCategories.SelectedItem;
+                note.LastUpdateDate = DateTime.Now;
+                tsslSonDegistirilmeTarihi.Text = DateTime.Now.ToString();
                 MessageBox.Show("Changes have been succesfully saved!");
+                note.isNoteSavedOnce = true;
             }
             else
             {
@@ -88,5 +98,45 @@ namespace KanBan.UI
                 Parent.Controls.Remove(this);
             }
         }
+
+        private void toDoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CopyMethod("flpToDo");
+        }
+        private void dToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CopyMethod("flpDoing");
+        }
+
+        private void doneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CopyMethod("flpDone");
+        }
+
+        private void CopyMethod(string flpName)
+        {
+
+            if (cboCategories.SelectedValue != null && note.isNoteSavedOnce)
+            {
+                Note copyNote = new Note() { Icerik = note.Icerik, Category = note.Category, Statu = StatuEnum.todo, Title = note.Title };
+                NoteForm copyNoteForm = new NoteForm(project, copyNote);
+                var todo = Parent.Parent.Controls.OfType<FlowLayoutPanel>().FirstOrDefault(x => x.Name == flpName);
+                //clbKategoriler.CheckedItems.OfType<Kategori>().ToList()
+                copyNoteForm.txtBaslik.Text = note.Title;
+                copyNoteForm.txtIcerik.Text = note.Icerik;
+                copyNoteForm.cboCategories.SelectedValue = note.Category.Id;
+                todo.Controls.Add(copyNoteForm);
+                copyNote.Statu = (StatuEnum)copyNoteForm.Parent.Tag;
+                ProjectAdmin.AddNoteToProject(project, copyNote);
+                copyNote.isNoteSavedOnce = true;
+            }
+            else
+            {
+                MessageBox.Show("Try to choose a category and save the note first!");
+            }
+
+        }
+
+
     }
 }

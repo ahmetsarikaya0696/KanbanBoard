@@ -14,8 +14,6 @@ namespace KanBan.UI
     public partial class ProjectForm : Form
     {
         private Project project;
-        private Note note;
-        private NoteForm noteForm;
         public ProjectForm(Project project)
         {
             this.project = project;
@@ -33,17 +31,13 @@ namespace KanBan.UI
 
         private void tsmiAddNote_Click(object sender, EventArgs e)
         {
-            note = new Note();
-            noteForm = new NoteForm(project, note);
+            Note note = new Note();
+            NoteForm noteForm = new NoteForm(project, note);
             flpToDo.Controls.Add(noteForm);
 
         }
 
-        private void NoteForm_DegisikliklerKaydedildi(object sender, EventArgs e)
-        {
-            //NotePreview notePreview = new NotePreview(not, proje);
-            //flpToDo.Controls.Add(notePreview);
-        }
+        
         private void deleteProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Are you sure?", "Delete Approval", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

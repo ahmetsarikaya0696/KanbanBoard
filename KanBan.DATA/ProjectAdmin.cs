@@ -11,12 +11,12 @@ namespace KanBan.DATA
         public static void AddProject(string ad)
         {
             Project project = new Project(ad);
-            Datass.Projects.Add(project);
+            KanbanData.Projects.Add(project);
         }
 
         public static void DeleteProject(Project project)
         {
-            Datass.Projects.Remove(project);
+            KanbanData.Projects.Remove(project);
         }
 
         public static void AddNoteToProject(Project project, Note note)
@@ -32,12 +32,12 @@ namespace KanBan.DATA
 
         public static void AddCategory(Category category)
         {
-            Datass.Categories.Add(category);
+            KanbanData.Categories.Add(category);
         }
 
         public static void DeleteCategory(Category category)
         {
-            Datass.Categories.Remove(category);
+            KanbanData.Categories.Remove(category);
         }
     }
 }
