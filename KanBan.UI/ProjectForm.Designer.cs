@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.msProjectContainer = new System.Windows.Forms.MenuStrip();
+            this.tsmiAddNote = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flpDone = new System.Windows.Forms.FlowLayoutPanel();
             this.lblDone = new System.Windows.Forms.Label();
@@ -36,8 +38,6 @@
             this.lblDoing = new System.Windows.Forms.Label();
             this.flpToDo = new System.Windows.Forms.FlowLayoutPanel();
             this.lblToDo = new System.Windows.Forms.Label();
-            this.tsmiAddNote = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msProjectContainer.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flpDone.SuspendLayout();
@@ -55,6 +55,23 @@
             this.msProjectContainer.Size = new System.Drawing.Size(786, 25);
             this.msProjectContainer.TabIndex = 4;
             this.msProjectContainer.Text = "menuStrip1";
+            // 
+            // tsmiAddNote
+            // 
+            this.tsmiAddNote.Image = global::KanBan.UI.Properties.Resources.add;
+            this.tsmiAddNote.Name = "tsmiAddNote";
+            this.tsmiAddNote.Size = new System.Drawing.Size(93, 21);
+            this.tsmiAddNote.Text = "Add Note";
+            this.tsmiAddNote.Click += new System.EventHandler(this.tsmiAddNote_Click);
+            // 
+            // deleteProjectToolStripMenuItem
+            // 
+            this.deleteProjectToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.deleteProjectToolStripMenuItem.Image = global::KanBan.UI.Properties.Resources.delete;
+            this.deleteProjectToolStripMenuItem.Name = "deleteProjectToolStripMenuItem";
+            this.deleteProjectToolStripMenuItem.Size = new System.Drawing.Size(117, 21);
+            this.deleteProjectToolStripMenuItem.Text = "Delete Project";
+            this.deleteProjectToolStripMenuItem.Click += new System.EventHandler(this.deleteProjectToolStripMenuItem_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -153,23 +170,6 @@
             this.lblToDo.Text = "TODO";
             this.lblToDo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tsmiAddNote
-            // 
-            this.tsmiAddNote.Image = global::KanBan.UI.Properties.Resources.add;
-            this.tsmiAddNote.Name = "tsmiAddNote";
-            this.tsmiAddNote.Size = new System.Drawing.Size(93, 21);
-            this.tsmiAddNote.Text = "Add Note";
-            this.tsmiAddNote.Click += new System.EventHandler(this.tsmiAddNote_Click);
-            // 
-            // deleteProjectToolStripMenuItem
-            // 
-            this.deleteProjectToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.deleteProjectToolStripMenuItem.Image = global::KanBan.UI.Properties.Resources.delete;
-            this.deleteProjectToolStripMenuItem.Name = "deleteProjectToolStripMenuItem";
-            this.deleteProjectToolStripMenuItem.Size = new System.Drawing.Size(117, 21);
-            this.deleteProjectToolStripMenuItem.Text = "Delete Project";
-            this.deleteProjectToolStripMenuItem.Click += new System.EventHandler(this.deleteProjectToolStripMenuItem_Click);
-            // 
             // ProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -179,6 +179,7 @@
             this.Controls.Add(this.msProjectContainer);
             this.Name = "ProjectForm";
             this.Text = "ProjectForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProjectForm_FormClosing);
             this.msProjectContainer.ResumeLayout(false);
             this.msProjectContainer.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

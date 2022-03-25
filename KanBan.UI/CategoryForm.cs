@@ -14,12 +14,12 @@ namespace KanBan.UI
     public partial class CategoryForm : Form
     {
         ColorDialog colorDialog;
-    
+
         Color selectedColor;
         bool ColorIsSelected = false;
         public CategoryForm()
         {
-            
+
             InitializeComponent();
             colorDialog = new ColorDialog();
             lstCategories.DataSource = KanbanData.Categories;
@@ -31,17 +31,19 @@ namespace KanBan.UI
             if (btnAddCategory.Text == "Add Category" && txtCategoryName.Text.Trim() != "" && ColorIsSelected)
             {
                 Category category = new Category();
-                category.Color = btnAddCategory.BackColor;
+                category.Color = selectedColor;
                 category.Name = txtCategoryName.Text.Trim();
                 ProjectAdmin.AddCategory(category);
-                ColorIsSelected=false;
+                ColorIsSelected = false;
                 txtCategoryName.Clear();
             }
             else if (btnAddCategory.Text == "Update Category" && txtCategoryName.Text.Trim() != "" && ColorIsSelected)
             {
                 var selectedCategory = (Category)lstCategories.SelectedItem;
-                selectedCategory.Color = btnAddCategory.BackColor;
+                selectedCategory.Color = selectedColor;
                 selectedCategory.Name = txtCategoryName.Text.Trim();
+                lstCategories.DataSource = null;
+                lstCategories.DataSource = KanbanData.Categories;
                 ColorIsSelected = false;
                 txtCategoryName.Clear();
             }
@@ -49,7 +51,7 @@ namespace KanBan.UI
             {
                 MessageBox.Show("Category name can't be empty!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if(btnChooseColor.BackColor == SystemColors.Control) // defaultrenk
+            else if (btnChooseColor.BackColor == SystemColors.Control) // defaultrenk
             {
                 MessageBox.Show("Color can't be empty!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -63,8 +65,6 @@ namespace KanBan.UI
                 btnCancel.Visible = true;
                 var selectedCategory = (Category)lstCategories.SelectedItem;
                 txtCategoryName.Text = selectedCategory.Name;
-
-                // niye olmuyor bura kardeşim yaaaaaaa
                 btnChooseColor.BackColor = selectedCategory.Color;
                 ColorIsSelected = true;
             }

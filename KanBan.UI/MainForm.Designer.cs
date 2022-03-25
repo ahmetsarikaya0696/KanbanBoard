@@ -31,6 +31,8 @@
             this.msAnaForm = new System.Windows.Forms.MenuStrip();
             this.tsmiAddNewProject = new System.Windows.Forms.ToolStripMenuItem();
             this.addAndEditCategoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lstClosedProjects = new System.Windows.Forms.ListBox();
+            this.tsmiShowClosedProjects = new System.Windows.Forms.ToolStripMenuItem();
             this.msAnaForm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,7 +41,8 @@
             this.msAnaForm.AllowMerge = false;
             this.msAnaForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiAddNewProject,
-            this.addAndEditCategoriesToolStripMenuItem});
+            this.addAndEditCategoriesToolStripMenuItem,
+            this.tsmiShowClosedProjects});
             this.msAnaForm.Location = new System.Drawing.Point(0, 0);
             this.msAnaForm.Name = "msAnaForm";
             this.msAnaForm.Size = new System.Drawing.Size(698, 25);
@@ -62,11 +65,29 @@
             this.addAndEditCategoriesToolStripMenuItem.Text = "Add and Edit Categories";
             this.addAndEditCategoriesToolStripMenuItem.Click += new System.EventHandler(this.addAndEditCategoriesToolStripMenuItem_Click);
             // 
+            // lstClosedProjects
+            // 
+            this.lstClosedProjects.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lstClosedProjects.FormattingEnabled = true;
+            this.lstClosedProjects.Location = new System.Drawing.Point(0, 25);
+            this.lstClosedProjects.Name = "lstClosedProjects";
+            this.lstClosedProjects.Size = new System.Drawing.Size(202, 359);
+            this.lstClosedProjects.TabIndex = 4;
+            this.lstClosedProjects.Visible = false;
+            // 
+            // tsmiShowClosedProjects
+            // 
+            this.tsmiShowClosedProjects.Name = "tsmiShowClosedProjects";
+            this.tsmiShowClosedProjects.Size = new System.Drawing.Size(145, 21);
+            this.tsmiShowClosedProjects.Text = "Show Closed Projects";
+            this.tsmiShowClosedProjects.Click += new System.EventHandler(this.tsmiShowClosedProjects_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(698, 384);
+            this.Controls.Add(this.lstClosedProjects);
             this.Controls.Add(this.msAnaForm);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.msAnaForm;
@@ -85,5 +106,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiAddNewProject;
         private System.Windows.Forms.MenuStrip msAnaForm;
         private System.Windows.Forms.ToolStripMenuItem addAndEditCategoriesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiShowClosedProjects;
+        private System.Windows.Forms.ListBox lstClosedProjects;
     }
 }

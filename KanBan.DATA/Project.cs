@@ -19,5 +19,11 @@ namespace KanBan.DATA
         public List<Note> Notes { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime LastUpdateDate { get; set; }
+        public bool isOpen { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
     }
 }

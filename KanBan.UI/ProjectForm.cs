@@ -16,11 +16,11 @@ namespace KanBan.UI
         private Project project;
         public ProjectForm(Project project)
         {
-            this.project = project;
             InitializeComponent();
+            this.project = project;
+            this.Text = project.Name;
             lblToDo.Width = lblDoing.Width = lblDone.Width = flpToDo.Width = flpDoing.Width = flpDone.Width = ClientSize.Width;
             flpToDo.Height = flpDoing.Height = flpDone.Height = ClientSize.Height;
-            this.Text = project.Name;
 
             flpToDo.Tag = StatuEnum.todo;
             flpDoing.Tag = StatuEnum.doing;
@@ -32,7 +32,7 @@ namespace KanBan.UI
         private void tsmiAddNote_Click(object sender, EventArgs e)
         {
             Note note = new Note();
-            NoteForm noteForm = new NoteForm(project, note);
+            NoteUserControl noteForm = new NoteUserControl(project, note);
             flpToDo.Controls.Add(noteForm);
 
         }
@@ -85,7 +85,7 @@ namespace KanBan.UI
                 return;
 
             var name = e.Data.GetData(typeof(string)) as string;
-            var ctr = Controls.Find(name, true).Where(x => ((NoteForm)x).Selected).FirstOrDefault();
+            var ctr = Controls.Find(name, true).Where(x => ((NoteUserControl)x).Selected).FirstOrDefault();
             if (ctr != null)
             {
                 ctr.Parent.Controls.Remove(ctr);
@@ -99,5 +99,9 @@ namespace KanBan.UI
             e.Effect = DragDropEffects.Move;
         }
 
+        private void ProjectForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            project.isOpen = false;
+        }
     }
 }

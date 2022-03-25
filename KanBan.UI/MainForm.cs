@@ -1,11 +1,14 @@
 ﻿using KanBan.DATA;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,10 +19,20 @@ namespace KanBan.UI
         private bool isFormOpen { get; set; }
         public MainForm()
         {
+
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
             isFormOpen = true;
+            this.WindowState = FormWindowState.Maximized;
+            ReadKanbanDatas();
+            BindingList<Project> passiveProjects = new BindingList<Project>(); // temp list for closed projects
+            foreach (Project item in KanbanData.Projects)
+            {
+                if (!item.isOpen)
+                    passiveProjects.Add(item);
+            }
+            lstClosedProjects.DataSource = passiveProjects;
         }
+
 
         private void tsmiAddNewProject_Click(object sender, EventArgs e)
         {
@@ -56,12 +69,46 @@ namespace KanBan.UI
         private void AnaForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             isFormOpen = false;
+
+            foreach (Project item in KanbanData.Projects)
+                item.isOpen = false;
+
+            SaveKanbanDatas();
+        }
+
+        private void SaveKanbanDatas()
+        {
+            string projectsToJson = JsonConvert.SerializeObject(KanbanData.Projects);
+            File.WriteAllText("projects.json", projectsToJson);
+
+            string categoriesToJson = JsonConvert.SerializeObject(KanbanData.Categories);
+            File.WriteAllText("categories.json", categoriesToJson);
+        }
+        private void ReadKanbanDatas()
+        {
+            try
+            {
+                string projectsFromJson = File.ReadAllText("projects.json");
+                KanbanData.Projects = JsonConvert.DeserializeObject<BindingList<Project>>(projectsFromJson);
+
+                string categoriesFromJson = File.ReadAllText("categories.json");
+                KanbanData.Categories = JsonConvert.DeserializeObject<BindingList<Category>>(categoriesFromJson);
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void addAndEditCategoriesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CategoryForm categoryForm = new CategoryForm();
             categoryForm.ShowDialog();
+        }
+
+        private void tsmiShowClosedProjects_Click(object sender, EventArgs e)
+        {
+            lstClosedProjects.Visible = !lstClosedProjects.Visible;
         }
     }
 }

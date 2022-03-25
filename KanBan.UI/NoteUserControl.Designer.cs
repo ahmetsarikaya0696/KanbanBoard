@@ -1,6 +1,6 @@
 ﻿namespace KanBan.UI
 {
-    partial class NoteForm
+    partial class NoteUserControl
     {
         /// <summary> 
         /// Required designer variable.

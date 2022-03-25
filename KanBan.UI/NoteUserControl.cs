@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace KanBan.UI
 {
-    public partial class NoteForm : UserControl
+    public partial class NoteUserControl : UserControl
     {
         private Note note;
         private Project project;
 
-        public NoteForm(Project project, Note note)
+        public NoteUserControl(Project project, Note note)
         {
             this.note = note;
             this.note.Statu = StatuEnum.todo;
@@ -37,7 +37,7 @@ namespace KanBan.UI
         {
             if (e.Button == MouseButtons.Left)
             {
-                var noteForm = sender as NoteForm;
+                var noteForm = sender as NoteUserControl;
                 noteForm.BackColor = Color.Blue;
                 noteForm.Selected = true;
 
@@ -51,7 +51,7 @@ namespace KanBan.UI
             }
             else if (e.Button == MouseButtons.Right)
             {
-                NoteForm noteform = (NoteForm)sender;
+                NoteUserControl noteform = (NoteUserControl)sender;
                 contextMenuStrip1.Show(noteform, new Point(e.X, e.Y));
             }
         }
@@ -72,6 +72,7 @@ namespace KanBan.UI
                 tsslSonDegistirilmeTarihi.Text = DateTime.Now.ToString();
                 MessageBox.Show("Changes have been succesfully saved!");
                 note.isNoteSavedOnce = true;
+                ProjectAdmin.AddNoteToProject(project, note);
             }
             else
             {
@@ -119,7 +120,7 @@ namespace KanBan.UI
             if (cboCategories.SelectedValue != null && note.isNoteSavedOnce)
             {
                 Note copyNote = new Note() { Icerik = note.Icerik, Category = note.Category, Statu = StatuEnum.todo, Title = note.Title };
-                NoteForm copyNoteForm = new NoteForm(project, copyNote);
+                NoteUserControl copyNoteForm = new NoteUserControl(project, copyNote);
                 var todo = Parent.Parent.Controls.OfType<FlowLayoutPanel>().FirstOrDefault(x => x.Name == flpName);
                 //clbKategoriler.CheckedItems.OfType<Kategori>().ToList()
                 copyNoteForm.txtBaslik.Text = note.Title;

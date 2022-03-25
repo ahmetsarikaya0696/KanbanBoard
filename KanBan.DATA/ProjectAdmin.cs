@@ -11,6 +11,7 @@ namespace KanBan.DATA
         public static void AddProject(string ad)
         {
             Project project = new Project(ad);
+            project.isOpen = true;
             KanbanData.Projects.Add(project);
         }
 
