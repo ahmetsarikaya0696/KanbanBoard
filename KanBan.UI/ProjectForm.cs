@@ -19,6 +19,7 @@ namespace KanBan.UI
             InitializeComponent();
             this.project = project;
             this.Text = project.Name;
+            AddNoteFormsToPanels();
             lblToDo.Width = lblDoing.Width = lblDone.Width = flpToDo.Width = flpDoing.Width = flpDone.Width = ClientSize.Width;
             flpToDo.Height = flpDoing.Height = flpDone.Height = ClientSize.Height;
 
@@ -27,7 +28,28 @@ namespace KanBan.UI
             flpDone.Tag = StatuEnum.done;
         }
 
-
+        private void AddNoteFormsToPanels()
+        {
+            foreach (Note item in project.Notes.ToList())
+            {
+                NoteUserControl noteUserControl;
+                if (item.Statu == StatuEnum.todo)
+                {
+                    noteUserControl = new NoteUserControl(project, item);
+                    flpToDo.Controls.Add(noteUserControl);
+                }
+                else if (item.Statu == StatuEnum.doing)
+                {
+                    noteUserControl = new NoteUserControl(project, item);
+                    flpDoing.Controls.Add(noteUserControl);
+                }
+                else
+                {
+                    noteUserControl = new NoteUserControl(project, item);
+                    flpDone.Controls.Add(noteUserControl);
+                }
+            }
+        }
 
         private void tsmiAddNote_Click(object sender, EventArgs e)
         {
@@ -37,7 +59,7 @@ namespace KanBan.UI
 
         }
 
-        
+
         private void deleteProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Are you sure?", "Delete Approval", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -102,7 +124,10 @@ namespace KanBan.UI
         private void ProjectForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             project.isOpen = false;
-            KanbanData.passiveProjects.Add(project);   
+            if (!project.isDeleted)
+            {
+                KanbanData.passiveProjects.Add(project);
+            }
         }
     }
 }

@@ -17,12 +17,17 @@ namespace KanBan.DATA
 
         public static void DeleteProject(Project project)
         {
+            project.Notes.Clear();
             KanbanData.Projects.Remove(project);
+            project.isDeleted = true;
         }
 
         public static void AddNoteToProject(Project project, Note note)
         {
-            project.Notes.Add(note);
+            if (!project.Notes.Contains(note))
+            {
+                project.Notes.Add(note);
+            }
         }
 
 

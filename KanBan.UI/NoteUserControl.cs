@@ -18,16 +18,21 @@ namespace KanBan.UI
 
         public NoteUserControl(Project project, Note note)
         {
-            this.note = note;
-            this.note.Statu = StatuEnum.todo;
-            this.project = project;
-            ProjectAdmin.AddNoteToProject(project, note);
             InitializeComponent();
-            CharLeft.Text = "0 / 140";
+            this.note = note;
+           
             cboCategories.DataSource = KanbanData.Categories;
             cboCategories.ValueMember = "Id";
             cboCategories.DisplayMember = "Name";
-            tsslSonDegistirilmeTarihi.Text = note.LastUpdateDate.ToString();
+
+            txtBaslik.Text = this.note.Title;
+            txtIcerik.Text = this.note.Content;
+            tsslSonDegistirilmeTarihi.Text = this.note.LastUpdateDate.ToString();
+            cboCategories.SelectedValue = this.note.Category.Id;
+
+            this.project = project;
+            ProjectAdmin.AddNoteToProject(project, note);
+            CharLeft.Text = "0 / 140";
 
         }
 
@@ -66,7 +71,7 @@ namespace KanBan.UI
             if (txtBaslik.Text.Trim() != "" && cboCategories.SelectedIndex != -1)
             {
                 note.Title = txtBaslik.Text.Trim();
-                note.Icerik = txtIcerik.Text;
+                note.Content = txtIcerik.Text;
                 note.Category = (Category)cboCategories.SelectedItem;
                 note.LastUpdateDate = DateTime.Now;
                 tsslSonDegistirilmeTarihi.Text = DateTime.Now.ToString();
@@ -119,12 +124,12 @@ namespace KanBan.UI
 
             if (cboCategories.SelectedValue != null && note.isNoteSavedOnce)
             {
-                Note copyNote = new Note() { Icerik = note.Icerik, Category = note.Category, Statu = StatuEnum.todo, Title = note.Title };
+                Note copyNote = new Note() { Content = note.Content, Category = note.Category, Statu = StatuEnum.todo, Title = note.Title };
                 NoteUserControl copyNoteForm = new NoteUserControl(project, copyNote);
                 var todo = Parent.Parent.Controls.OfType<FlowLayoutPanel>().FirstOrDefault(x => x.Name == flpName);
                 //clbKategoriler.CheckedItems.OfType<Kategori>().ToList()
                 copyNoteForm.txtBaslik.Text = note.Title;
-                copyNoteForm.txtIcerik.Text = note.Icerik;
+                copyNoteForm.txtIcerik.Text = note.Content;
                 copyNoteForm.cboCategories.SelectedValue = note.Category.Id;
                 todo.Controls.Add(copyNoteForm);
                 copyNote.Statu = (StatuEnum)copyNoteForm.Parent.Tag;
