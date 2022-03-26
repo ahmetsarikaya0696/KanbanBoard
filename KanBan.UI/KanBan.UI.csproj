@@ -150,5 +150,8 @@
   <ItemGroup>
     <None Include="Resources\painting-palette.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cloud-computing.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

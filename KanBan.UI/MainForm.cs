@@ -109,6 +109,7 @@ namespace KanBan.UI
         private void tsmiShowClosedProjects_Click(object sender, EventArgs e)
         {
             lstClosedProjects.Visible = !lstClosedProjects.Visible;
+            Listele();
         }
 
         private void lstClosedProjects_MouseDoubleClick(object sender, MouseEventArgs e)

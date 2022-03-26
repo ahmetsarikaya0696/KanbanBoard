@@ -67,8 +67,9 @@
             // 
             // tsmiShowClosedProjects
             // 
+            this.tsmiShowClosedProjects.Image = global::KanBan.UI.Properties.Resources.cloud_computing;
             this.tsmiShowClosedProjects.Name = "tsmiShowClosedProjects";
-            this.tsmiShowClosedProjects.Size = new System.Drawing.Size(145, 21);
+            this.tsmiShowClosedProjects.Size = new System.Drawing.Size(161, 21);
             this.tsmiShowClosedProjects.Text = "Show Closed Projects";
             this.tsmiShowClosedProjects.Click += new System.EventHandler(this.tsmiShowClosedProjects_Click);
             // 
