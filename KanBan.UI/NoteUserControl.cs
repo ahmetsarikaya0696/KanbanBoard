@@ -20,17 +20,19 @@ namespace KanBan.UI
         {
             InitializeComponent();
             this.note = note;
-           
+
             cboCategories.DataSource = KanbanData.Categories;
             cboCategories.ValueMember = "Id";
             cboCategories.DisplayMember = "Name";
-
-            txtBaslik.Text = this.note.Title;
-            txtIcerik.Text = this.note.Content;
-            tsslSonDegistirilmeTarihi.Text = this.note.LastUpdateDate.ToString();
-            cboCategories.SelectedValue = this.note.Category.Id;
-
             this.project = project;
+            if (KanbanData.passiveProjects.Contains(this.project))
+            {
+                txtBaslik.Text = this.note.Title;
+                txtIcerik.Text = this.note.Content;
+                tsslSonDegistirilmeTarihi.Text = this.note.LastUpdateDate.ToString();
+                cboCategories.SelectedValue = this.note.Category.Id;
+            }
+
             ProjectAdmin.AddNoteToProject(project, note);
             CharLeft.Text = "0 / 140";
 

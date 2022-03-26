@@ -24,7 +24,7 @@ namespace KanBan.UI
             isFormOpen = true;
             this.WindowState = FormWindowState.Maximized;
             ReadKanbanDatas();
-             // temp list for closed projects
+            // temp list for closed projects
             foreach (Project item in KanbanData.Projects)
             {
                 if (!item.isOpen)
